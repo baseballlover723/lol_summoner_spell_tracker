@@ -25,3 +25,10 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .idea
+# Ignore application configuration
+/config/application.yml
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity
