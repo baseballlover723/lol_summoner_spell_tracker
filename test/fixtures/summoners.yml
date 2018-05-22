@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  summoner_id: 
+  region: 
+
+two:
+  username: MyString
+  summoner_id: 
+  region: 
