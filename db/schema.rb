@@ -22,8 +22,22 @@ ActiveRecord::Schema.define(version: 2018_05_22_051919) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "game_modes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_modes_summoner_spells", id: false, force: :cascade do |t|
+    t.bigint "game_mode_id"
+    t.bigint "summoner_spell_id"
+    t.index ["game_mode_id"], name: "index_game_modes_summoner_spells_on_game_mode_id"
+    t.index ["summoner_spell_id"], name: "index_game_modes_summoner_spells_on_summoner_spell_id"
+  end
+
   create_table "runes", force: :cascade do |t|
     t.string "name"
+    t.string "image"
     t.float "summoner_spell_cdr"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
