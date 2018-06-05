@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_22_051919) do
+ActiveRecord::Schema.define(version: 2018_06_05_082753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(version: 2018_05_22_051919) do
     t.index ["summoner_spell_id"], name: "index_game_modes_summoner_spells_on_summoner_spell_id"
   end
 
+  create_table "last_updates", force: :cascade do |t|
+    t.datetime "time"
+  end
+
   create_table "runes", force: :cascade do |t|
     t.string "name"
     t.string "image"
@@ -54,7 +58,7 @@ ActiveRecord::Schema.define(version: 2018_05_22_051919) do
   create_table "summoners", force: :cascade do |t|
     t.string "username"
     t.integer "summoner_id"
-    t.integer "region"
+    t.string "region"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

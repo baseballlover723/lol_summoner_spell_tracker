@@ -3,7 +3,7 @@ class CreateSummoners < ActiveRecord::Migration[5.2]
     create_table :summoners do |t|
       t.string :username
       t.integer :summoner_id
-      t.integer :region
+      t.string :region
 
       t.timestamps
     end
