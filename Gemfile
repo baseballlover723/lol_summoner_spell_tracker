@@ -42,7 +42,8 @@ gem 'webpacker'
 gem 'react-rails'
 gem 'figaro'
 
-gem 'ruby-lol'
+# gem 'ruby-lol'
+gem 'ruby-lol', git: 'https://github.com/baseballlover723/ruby-lol.git', branch: 'with_rate_limit_bug_fix'
 gem 'httparty'
 
 group :development, :test do

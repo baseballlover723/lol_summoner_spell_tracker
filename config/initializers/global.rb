@@ -19,4 +19,9 @@ class Global
     Lol::Client.new(api_key, region: 'na')
   end
 
+  def game_queue(game_queue_id)
+    # TODO
+    raise 'not implemented'
+  end
+
 end

@@ -1,7 +1,7 @@
 require 'lol'
 
 class ApplicationController < ActionController::Base
-  UPDATE_FREQUENCY = 1.hour
+  UPDATE_FREQUENCY = 24.hour
   @@last_update = LastUpdate.take || LastUpdate.create(time: Time.at(0))
   @@patch = '8.11.1'
 
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     champions.each do |champion_struct|
       champion = Champion.find_by(id: champion_struct.id) || Champion.new(id: champion_struct.id)
       image_url = Champion.image_url champion_struct.image['full'], Global.patch
-      champion.update(name: champion_struct.name, image: image_url)
+      champion.update!(name: champion_struct.name, image: image_url)
     end
   end
 
@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
       cooldown = summoner_spell_struct.cooldown.first.to_i
       modes = GameMode.get_modes summoner_spell_struct.modes
 
-      summoner_spell.update(name: summoner_spell_struct.name, image: image_url, cooldown: cooldown, game_modes: modes)
+      summoner_spell.update!(name: summoner_spell_struct.name, image: image_url, cooldown: cooldown, game_modes: modes)
     end
   end
 
@@ -56,15 +56,15 @@ class ApplicationController < ActionController::Base
       image_url = Rune.image_url rune_struct.id, Global.patch
       summoner_spell_cdr = Rune.parse_summoner_spell_cdr(rune_struct)
 
-      rune.update(name: rune_struct.name, image: image_url, summoner_spell_cdr: summoner_spell_cdr)
+      rune.update!(name: rune_struct.name, image: image_url, summoner_spell_cdr: summoner_spell_cdr)
     end
   end
 
   private
 
   def reforged_runes
-    # Global.static_client.static.reforged_runes.get
-    response = HTTParty.get("https://na1.api.riotgames.com/lol/static-data/v3/reforged-runes?api_key=#{Global.api_key}")
-    response.map {|obj| OpenStruct.new obj}
+    Global.static_client.static.reforged_runes.get
+    # response = HTTParty.get("https://na1.api.riotgames.com/lol/static-data/v3/reforged-runes?api_key=#{Global.api_key}")
+    # response.map {|obj| OpenStruct.new obj}
   end
 end

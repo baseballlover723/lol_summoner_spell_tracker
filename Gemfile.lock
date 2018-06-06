@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/baseballlover723/ruby-lol.git
+  revision: 6b8a4380335dd67098c268d0e5c9661adab44a09
+  branch: with_rate_limit_bug_fix
+  specs:
+    ruby-lol (1.1.2)
+      activesupport
+      glutton_ratelimit
+      httparty (= 0.14.0)
+      redis
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -178,11 +189,6 @@ GEM
       railties (>= 3.2)
       tilt
     redis (4.0.1)
-    ruby-lol (1.1.2)
-      activesupport
-      glutton_ratelimit
-      httparty (= 0.14.0)
-      redis
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.6)
@@ -257,7 +263,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.0)
   react-rails
-  ruby-lol
+  ruby-lol!
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
@@ -272,4 +278,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
